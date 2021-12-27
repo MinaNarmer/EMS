@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EFGHermes.BL\EFGHermes.BL.csproj" />
     <ProjectReference Include="..\EFGHermes.DAL\EFGHermes.DAL.csproj" />
     <ProjectReference Include="..\EFGHermes.Data\EFGHermes.Data.csproj" />
   </ItemGroup>

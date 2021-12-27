@@ -1,10 +1,15 @@
+using EFGHermes.BL.IServices;
+using EFGHermes.BL.Services;
 using EFGHermes.DAL.IRepositories;
 using EFGHermes.DAL.Repositories;
+using EFGHermes.Data.DAL.IPersistance;
 using EFGHermes.Data.DAL.IRepository;
+using EFGHermes.Data.DAL.Persistance;
 using EFGHermes.Data.DAL.Repository;
 using EFGHermes.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +42,14 @@ namespace EFGHermes.Web
             services.AddScoped<IRoomRepository,RoomRepository>();
             services.AddScoped<IRoomSlotRepository,RoomSlotRepository>();
             services.AddScoped<ISectorRepository,SectorRepository>();
+            services.AddScoped<IDbFactory, DbFactory>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            #endregion
+
+            #region Resolve Services    
+            services.AddScoped<IHotelServices, HotelServices>();
+
             #endregion
         }
 
