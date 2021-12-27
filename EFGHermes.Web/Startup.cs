@@ -1,3 +1,7 @@
+using EFGHermes.DAL.IRepositories;
+using EFGHermes.DAL.Repositories;
+using EFGHermes.Data.DAL.IRepository;
+using EFGHermes.Data.DAL.Repository;
 using EFGHermes.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +26,18 @@ namespace EFGHermes.Web
         {
             services.AddDbContext<HermesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            #region Resolve Repositories
             services.AddControllersWithViews();
+            services.AddScoped<IHotelRepository,HotelRepository>();
+            services.AddScoped<IInvestorRepository, InvestorRepository>();
+            services.AddScoped<IInvestorSectorRepository, InvestorSectorRepository>();
+            services.AddScoped<IPresenterRepository, PresenterRepository>();
+            services.AddScoped<IPresenterSectorRepository, PresenterSectorRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IRoomRepository,RoomRepository>();
+            services.AddScoped<IRoomSlotRepository,RoomSlotRepository>();
+            services.AddScoped<ISectorRepository,SectorRepository>();
+            #region
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
