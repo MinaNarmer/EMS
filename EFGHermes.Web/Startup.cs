@@ -1,3 +1,5 @@
+using AutoMapper;
+using EFGHermes.BL.Helpers.MapperConfig;
 using EFGHermes.BL.IServices;
 using EFGHermes.BL.Services;
 using EFGHermes.DAL.IRepositories;
@@ -30,6 +32,14 @@ namespace EFGHermes.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HermesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new GeneralProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
 
             #region Resolve Repositories
             services.AddControllersWithViews();
