@@ -37,7 +37,7 @@ namespace EFGHermes.Web
             services.AddScoped<IRoomRepository,RoomRepository>();
             services.AddScoped<IRoomSlotRepository,RoomSlotRepository>();
             services.AddScoped<ISectorRepository,SectorRepository>();
-            #region
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
