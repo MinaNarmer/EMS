@@ -12,11 +12,10 @@ namespace EFGHermes.Data.Models
         [ForeignKey("Sector")]
         public int SectorId { get; set; }
         public DateTime SlotDate { get; set; }
-        public int HourFrom { get; set; }
-        public int HourTo { get; set; }
+        public TimeSpan HourFrom { get; set; }
+        public TimeSpan HourTo { get; set; }
 
-        [MaxLength(2)]
-        public string TimeType { get; set; } // It mean AM or PM
+        
 
 
         #region Navigation Properties

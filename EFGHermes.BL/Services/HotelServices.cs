@@ -1,7 +1,9 @@
 ﻿
 using AutoMapper;
+using EFGHermes.BL.Dtos;
 using EFGHermes.BL.Dtos.Base;
 using EFGHermes.BL.IServices;
+using EFGHermes.DAL.IRepositories;
 using EFGHermes.Data.DAL.IPersistance;
 using EFGHermes.Data.DAL.IRepository;
 using EFGHermes.Data.Models;
@@ -18,12 +20,16 @@ namespace EFGHermes.BL.Services
         public IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IHotelRepository _hotelRepository;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IRoomSlotRepository _roomSlotRepository;
 
-        public HotelServices(IMapper mapper, IUnitOfWork unitOfWork, IHotelRepository hotelRepository)
+        public HotelServices(IMapper mapper, IUnitOfWork unitOfWork, IHotelRepository hotelRepository, IRoomRepository roomRepository, IRoomSlotRepository roomSlotRepository)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _hotelRepository = hotelRepository;
+            _roomRepository = roomRepository;
+            _roomSlotRepository = roomSlotRepository;
         }
 
         #endregion
@@ -42,6 +48,36 @@ namespace EFGHermes.BL.Services
 
             return _mapper.Map<List<IdNameDto>>(hotels);
         }
+
+        public void CreateRoomWithTimeSlot(CreateRoomDto dto)
+        {
+            //var room = new Room
+            //{
+            //    Name = dto.Name,
+            //    HotelId = dto.HotelId
+               
+            //};
+            //_roomRepository.Add(room);
+
+            _roomSlotRepository.Add(new RoomSlot
+            {
+
+                SlotDate = dto.SlotDateFrom.Date,
+                HourFrom = dto.SlotDateFrom.TimeOfDay,
+                HourTo = dto.SlotDateTo.TimeOfDay,
+                 Room =  new Room
+                 {
+                     Name = dto.Name,
+                     HotelId = dto.HotelId
+
+                 }
+        });
+            _unitOfWork.SaveChanges();
+
+        }
+
+
+
         #endregion
 
     }

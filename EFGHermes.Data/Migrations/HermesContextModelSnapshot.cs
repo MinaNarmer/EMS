@@ -63,11 +63,11 @@ namespace EFGHermes.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("HourFrom")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourFrom")
+                        .HasColumnType("time");
 
-                    b.Property<int>("HourTo")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourTo")
+                        .HasColumnType("time");
 
                     b.Property<int>("InvestorId")
                         .HasColumnType("int");
@@ -77,10 +77,6 @@ namespace EFGHermes.Data.Migrations
 
                     b.Property<DateTime>("SlotDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("TimeType")
-                        .HasColumnType("nvarchar(2)")
-                        .HasMaxLength(2);
 
                     b.HasKey("Id");
 
@@ -118,11 +114,11 @@ namespace EFGHermes.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("HourFrom")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourFrom")
+                        .HasColumnType("time");
 
-                    b.Property<int>("HourTo")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourTo")
+                        .HasColumnType("time");
 
                     b.Property<int>("PresenterId")
                         .HasColumnType("int");
@@ -132,10 +128,6 @@ namespace EFGHermes.Data.Migrations
 
                     b.Property<DateTime>("SlotDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("TimeType")
-                        .HasColumnType("nvarchar(2)")
-                        .HasMaxLength(2);
 
                     b.HasKey("Id");
 
@@ -217,21 +209,17 @@ namespace EFGHermes.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("HourFrom")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourFrom")
+                        .HasColumnType("time");
 
-                    b.Property<int>("HourTo")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("HourTo")
+                        .HasColumnType("time");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("SlotDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("TimeType")
-                        .HasColumnType("nvarchar(2)")
-                        .HasMaxLength(2);
 
                     b.HasKey("Id");
 

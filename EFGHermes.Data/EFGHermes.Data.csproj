@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20211226215431_Initial.Designer.cs" />
     <Compile Remove="Migrations\20211226215639_Initial.cs" />
     <Compile Remove="Migrations\20211226215639_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20211226220337_Initial.cs" />
+    <Compile Remove="Migrations\20211226220337_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20211228192815_UpdateHourType.cs" />
+    <Compile Remove="Migrations\20211228192815_UpdateHourType.Designer.cs" />
+    <Compile Remove="Migrations\20211228193036_Initial.cs" />
+    <Compile Remove="Migrations\20211228193036_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +33,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

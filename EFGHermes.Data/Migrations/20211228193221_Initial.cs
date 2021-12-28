@@ -90,9 +90,8 @@ namespace EFGHermes.Data.Migrations
                     InvestorId = table.Column<int>(nullable: false),
                     SectorId = table.Column<int>(nullable: false),
                     SlotDate = table.Column<DateTime>(nullable: false),
-                    HourFrom = table.Column<int>(nullable: false),
-                    HourTo = table.Column<int>(nullable: false),
-                    TimeType = table.Column<string>(maxLength: 2, nullable: true)
+                    HourFrom = table.Column<TimeSpan>(nullable: false),
+                    HourTo = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -120,9 +119,8 @@ namespace EFGHermes.Data.Migrations
                     PresenterId = table.Column<int>(nullable: false),
                     SectorId = table.Column<int>(nullable: false),
                     SlotDate = table.Column<DateTime>(nullable: false),
-                    HourFrom = table.Column<int>(nullable: false),
-                    HourTo = table.Column<int>(nullable: false),
-                    TimeType = table.Column<string>(maxLength: 2, nullable: true)
+                    HourFrom = table.Column<TimeSpan>(nullable: false),
+                    HourTo = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,9 +147,8 @@ namespace EFGHermes.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomId = table.Column<int>(nullable: false),
                     SlotDate = table.Column<DateTime>(nullable: false),
-                    HourFrom = table.Column<int>(nullable: false),
-                    HourTo = table.Column<int>(nullable: false),
-                    TimeType = table.Column<string>(maxLength: 2, nullable: true)
+                    HourFrom = table.Column<TimeSpan>(nullable: false),
+                    HourTo = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {

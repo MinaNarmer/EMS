@@ -1,4 +1,5 @@
 ﻿
+using EFGHermes.BL.Dtos;
 using EFGHermes.BL.Dtos.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,5 +10,8 @@ namespace EFGHermes.BL.IServices
     {
         void CreateHotel(IdNameDto dto);
         Task<List<IdNameDto>> GetHotelsAsync();
+
+        void CreateRoomWithTimeSlot(CreateRoomDto dto);
+
     }
 }

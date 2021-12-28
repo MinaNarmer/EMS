@@ -1,4 +1,5 @@
-﻿using EFGHermes.BL.Dtos.Base;
+﻿using EFGHermes.BL.Dtos;
+using EFGHermes.BL.Dtos.Base;
 using EFGHermes.BL.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -30,6 +31,21 @@ namespace EFGHermes.Web.Controllers
         public IActionResult Create(IdNameDto dto)
         {
             _hotelServices.CreateHotel(dto);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult CreateRoom(int HotelId)
+        {
+            TempData["HotelId"] = HotelId;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateRoom(CreateRoomDto dto)
+        {
+            dto.HotelId = (int)TempData["HotelId"];
+            _hotelServices.CreateRoomWithTimeSlot(dto);
             return RedirectToAction("Index");
         }
     }
