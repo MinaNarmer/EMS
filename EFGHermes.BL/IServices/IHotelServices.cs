@@ -10,8 +10,11 @@ namespace EFGHermes.BL.IServices
     {
         void CreateHotel(IdNameDto dto);
         Task<List<IdNameDto>> GetHotelsAsync();
-
+        Task<HotelRoomSlotDetailDto> GetHotelRoomsSlotsAsync(int hotelId);
         void CreateRoomWithTimeSlot(CreateRoomDto dto);
+
+
+
 
     }
 }

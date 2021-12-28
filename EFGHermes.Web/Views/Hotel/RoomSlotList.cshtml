@@ -1,0 +1,55 @@
+﻿@model EFGHermes.BL.Dtos.Base.HotelRoomSlotDetailDto
+
+<div>
+    <h4>Hotel Room Slots Detail</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <div>
+
+        @foreach (var item in Model.Rooms)
+        {
+
+            @Html.DisplayFor(modelItem => item.Name)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Slot Date
+                        </th>
+                        <th>From</th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slot in item.RoomSlots)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => slot.SlotDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => slot.From)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => slot.To)
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+
+    </div>
+    
+
+
+</div>
+

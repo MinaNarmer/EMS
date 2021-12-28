@@ -51,29 +51,44 @@ namespace EFGHermes.BL.Services
 
         public void CreateRoomWithTimeSlot(CreateRoomDto dto)
         {
-            //var room = new Room
-            //{
-            //    Name = dto.Name,
-            //    HotelId = dto.HotelId
-               
-            //};
-            //_roomRepository.Add(room);
-
             _roomSlotRepository.Add(new RoomSlot
             {
 
                 SlotDate = dto.SlotDateFrom.Date,
                 HourFrom = dto.SlotDateFrom.TimeOfDay,
                 HourTo = dto.SlotDateTo.TimeOfDay,
-                 Room =  new Room
-                 {
-                     Name = dto.Name,
-                     HotelId = dto.HotelId
+                Room = new Room
+                {
+                    Name = dto.Name,
+                    HotelId = dto.HotelId
 
-                 }
-        });
+                }
+            });
             _unitOfWork.SaveChanges();
 
+        }
+
+        public async Task<HotelRoomSlotDetailDto> GetHotelRoomsSlotsAsync(int hotelId)
+        {
+            var hotel = _hotelRepository.GetById(hotelId);
+            var rooms = await _roomRepository.GetAll()
+                .Include(x=> x.RoomSlots)
+                .Where(x => x.HotelId == hotelId).ToListAsync();
+
+            var model = new HotelRoomSlotDetailDto
+            {
+                Name = hotel.Name,
+                Rooms= rooms.Select(x=> new RoomDto { 
+                Name = x.Name,
+                RoomSlots = x.RoomSlots.Select(r=> new RoomSlotDto { 
+                SlotDate = r.SlotDate,
+                From =r.HourFrom,
+                To = r.HourTo
+                }).ToList()
+                }).ToList()
+
+            };
+            return model;
         }
 
 

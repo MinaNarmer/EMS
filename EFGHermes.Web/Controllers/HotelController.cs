@@ -48,5 +48,15 @@ namespace EFGHermes.Web.Controllers
             _hotelServices.CreateRoomWithTimeSlot(dto);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> RoomSlotList(int hotelId)
+        {
+          var model = await _hotelServices.GetHotelRoomsSlotsAsync(hotelId);
+            return View(model);
+        }
+
+
+
     }
 }

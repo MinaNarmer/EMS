@@ -27,8 +27,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Add Room", "CreateRoom", new { HotelId = item.Id  }) 
-                
+                @Html.ActionLink("Add Room", "CreateRoom", new { HotelId = item.Id })
+                @Html.ActionLink("Rooms Detail", "RoomSlotList", new { HotelId = item.Id })
+
             </td>
         </tr>
 }
