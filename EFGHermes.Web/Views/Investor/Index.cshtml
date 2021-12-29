@@ -1,1 +1,43 @@
-﻿
+﻿@model IEnumerable<EFGHermes.BL.Dtos.InvestorDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Inverstor Name
+            </th>
+            <th>
+                Inverstor Mobile
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.ActionLink("Add Sector", "CreateSectorWithTimeSlot", new { investorId = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Sectors Details", "CreateSectorWithTimeSlot", new { investorId = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

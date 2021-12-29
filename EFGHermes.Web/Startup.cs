@@ -9,6 +9,7 @@ using EFGHermes.Data.DAL.IRepository;
 using EFGHermes.Data.DAL.Persistance;
 using EFGHermes.Data.DAL.Repository;
 using EFGHermes.Data.Models;
+using EFGHermes.Data.Models.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -68,7 +69,7 @@ namespace EFGHermes.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, HermesContext _context)
         {
             if (env.IsDevelopment())
             {
@@ -80,6 +81,7 @@ namespace EFGHermes.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            SeedData.SeedSectors(_context);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

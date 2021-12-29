@@ -1,24 +1,28 @@
 ﻿
+using System.Collections.Generic;
+using System.Linq;
+
 namespace EFGHermes.Data.Models.Seed
 {
     public class SeedData
     {
-        public static void SeedHotels(HermesContext _context)
+        public static void SeedSectors(HermesContext _context)
         {
-            //context.Database.EnsureCreated();
-            //if (!context.Address.Any())
-            //{
-            //    var adresses = new List<Address>
-            //{
-            //    new Address { Name = "Egypt"},
-            //    new Address { Name = "Lebanon"},
-            //    new Address { Name = "USA"},
-            //    new Address { Name = "UAE"},
+            _context.Database.EnsureCreated();
+            if (!_context.Sectors.Any())
+            {
+                var sectors = new List<Sector>
+            {
+                new Sector { Name = "Restaurants"},
+                new Sector { Name = "Finance"},
+                new Sector { Name = "IT"},
+                new Sector { Name = "Real Estate"},
 
-            //};
-            //    context.AddRange(adresses);
+            };
+                _context.AddRange(sectors);
+                _context.SaveChanges();
 
-            //}
+            }
         }
     }
 }
