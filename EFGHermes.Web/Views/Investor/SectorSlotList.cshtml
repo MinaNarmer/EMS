@@ -1,0 +1,51 @@
+﻿@model EFGHermes.BL.Dtos.InvestorSectorDetailDto
+
+@{
+    ViewData["Title"] = "SectorSlotList";
+}
+
+<dl class="row">
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+</dl>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                SectorName
+            </th>
+            <th>
+                Slot Date
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sector in Model.Sectors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => sector.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => sector.SlotDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => sector.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => sector.From)
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

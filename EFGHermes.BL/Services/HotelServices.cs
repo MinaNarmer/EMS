@@ -81,9 +81,9 @@ namespace EFGHermes.BL.Services
                 Rooms= rooms.Select(x=> new RoomDto { 
                 Name = x.Name,
                 RoomSlots = x.RoomSlots.Select(r=> new RoomSlotDto { 
-                SlotDate = r.SlotDate,
-                From =r.HourFrom,
-                To = r.HourTo
+                SlotDate = r.SlotDate.ToString("dddd, dd MMMM yyyy"),
+                From =r.HourFrom.ToString("dd\\:hh\\:mm"),
+                To = r.HourTo.ToString("dd\\:hh\\:mm")
                 }).ToList()
                 }).ToList()
 

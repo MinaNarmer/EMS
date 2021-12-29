@@ -12,6 +12,10 @@ namespace EFGHermes.BL.IServices
         Task<List<IdNameDto>> GetSectorssAsync();
         void CreateSectorWithTimeSlot(CreateInvestorSectorTimeSlot dto);
 
+        Task<InvestorSectorDetailDto> GetInvestorSectorAsync(int investorId);
+
+
+
 
     }
 }

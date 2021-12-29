@@ -22,14 +22,15 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           
+
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.ActionLink("Add Room", "CreateRoom", new { HotelId = item.Id })
+            </td>
+            <td>
                 @Html.ActionLink("Rooms Detail", "RoomSlotList", new { HotelId = item.Id })
-
             </td>
         </tr>
 }

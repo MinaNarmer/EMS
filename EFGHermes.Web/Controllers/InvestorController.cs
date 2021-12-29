@@ -51,6 +51,13 @@ namespace EFGHermes.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> SectorSlotList(int investorId)
+        {
+            var model = await _investorServices.GetInvestorSectorAsync(investorId);
+            return View(model);
+        }
+
 
     }
 }

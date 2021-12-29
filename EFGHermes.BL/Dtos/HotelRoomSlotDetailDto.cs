@@ -18,8 +18,8 @@ namespace EFGHermes.BL.Dtos.Base
     }
     public class RoomSlotDto
     {
-        public DateTime SlotDate { get; set; }
-        public TimeSpan From { get; set; }
-        public TimeSpan To { get; set; }
+        public string SlotDate { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
     }
 }

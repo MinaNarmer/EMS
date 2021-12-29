@@ -4,8 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -35,7 +33,7 @@
                 @Html.ActionLink("Add Sector", "CreateSectorWithTimeSlot", new { investorId = item.Id })
             </td>
             <td>
-                @Html.ActionLink("Sectors Details", "CreateSectorWithTimeSlot", new { investorId = item.Id })
+                @Html.ActionLink("Sectors Details", "SectorSlotList", new { investorId = item.Id })
             </td>
         </tr>
 }

@@ -8,6 +8,7 @@ using EFGHermes.Data.DAL.IPersistance;
 using EFGHermes.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EFGHermes.BL.Services
@@ -69,6 +70,27 @@ namespace EFGHermes.BL.Services
 
         }
 
+        public async Task<InvestorSectorDetailDto> GetInvestorSectorAsync(int investorId)
+        {
+            var investor = _investorRepository.GetById(investorId);
+            var sectors = await _investorSectorRepository.GetAll()
+                .Include(x=> x.Sector)
+                .Where(x => x.InvestorId == investorId).ToListAsync();
 
+            var model = new InvestorSectorDetailDto
+            {
+                Name = investor.Name,
+                Sectors = sectors.Select(x => new SectorSlot
+                {
+                    Name = x.Sector.Name,
+                    SlotDate = x.SlotDate.ToString("dddd, dd MMMM yyyy"),
+                    From = x.HourFrom.ToString("dd\\:hh\\:mm"),
+                    To = x.HourTo.ToString("dd\\:hh\\:mm")
+
+                }).ToList()
+
+            };
+            return model;
+        }
     }
 }
