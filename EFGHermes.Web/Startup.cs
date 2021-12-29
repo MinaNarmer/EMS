@@ -59,6 +59,10 @@ namespace EFGHermes.Web
 
             #region Resolve Services    
             services.AddScoped<IHotelServices, HotelServices>();
+            services.AddScoped<IInvestorService, InvestorService>();
+            services.AddScoped<IPresenterService, PresenterService>();
+            services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<IReportService, ReportService>();
 
             #endregion
         }
