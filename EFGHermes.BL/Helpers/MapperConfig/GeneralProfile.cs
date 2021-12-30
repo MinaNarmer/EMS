@@ -13,6 +13,10 @@ namespace EFGHermes.BL.Helpers.MapperConfig
             CreateMap<IdNameDto, Hotel>().ReverseMap();
             CreateMap<IdNameDto, Sector>().ReverseMap();
             CreateMap<InvestorDto, Investor>().ReverseMap();
+
+
+
+            CreateMap<PresenterDto, Presenter>().ReverseMap();
         }
     }
 }

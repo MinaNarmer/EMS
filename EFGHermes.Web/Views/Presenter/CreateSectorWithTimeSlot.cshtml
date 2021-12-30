@@ -1,0 +1,40 @@
+﻿@model EFGHermes.BL.Dtos.CreatePresenterSectorTimeSlot
+
+@{
+    ViewData["Title"] = "CreateSectorWithTimeSlot";
+}
+
+<h4>Create Sector</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSectorWithTimeSlot">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SectorId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.SectorId, ViewBag.Sectors as SelectList,
+                            "Select Sector", new { @class = "form-control" })
+                <span asp-validation-for="SectorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourFrom" class="control-label"></label>
+                <input asp-for="HourFrom" class="form-control" />
+                <span asp-validation-for="HourFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourTo" class="control-label"></label>
+                <input asp-for="HourTo" class="form-control" />
+                <span asp-validation-for="HourTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
